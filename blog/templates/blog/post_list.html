@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+<!--부모에 등록한 block 이름을 적어줄 것 -->
+{% block content %}
+    <!--view 파일 render함수에서 파라미터 지정해준 이름으로 꼭! -->
+    {% for post in post_list %}
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
+            </div>
+            <h1>
+                <!-- 링크 연결해주기 -->
+                <a href="{% url "post_detail" post.pk %}">
+                    {{ post.title }}
+                </a>
+            </h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
